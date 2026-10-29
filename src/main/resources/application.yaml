@@ -1,3 +1,98 @@
 spring:
     application:
         name: starter
+    datasource:
+        url: jdbc:h2:mem:starter;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        username: sa
+        password:
+        driver-class-name: org.h2.Driver
+    h2:
+        console:
+            enabled: true
+            path: /h2-console
+    thymeleaf:
+        prefix: classpath:/templates/
+        suffix: .html
+        mode: HTML
+        encoding: UTF-8
+        cache: false
+        check-template-location: true
+    devtools:
+        livereload:
+            enabled: true
+        restart:
+            enabled: false
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 10MB
+            max-request-size: 100MB
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+    sql:
+        init:
+            # schema.sql에 초기화 SQL을 작성하기 전까지는 빈 스크립트 실행을 막습니다.
+            mode: never
+            schema-locations: classpath:schema.sql
+            # schema.sql 일부 문장이 실패해도 애플리케이션 시작을 계속합니다.
+            continue-on-error: true
+
+server:
+    tomcat:
+        # 1 MB JSON이 form URL 인코딩으로 최대 세 배 늘어나는 전송 크기를 수용합니다.
+        max-http-form-post-size: 4MB
+    compression:
+        enabled: true
+        mime-types: application/json, application/xml, text/html, text/xml, text/plain, text/css, application/javascript
+        min-response-size: 1024 # 1KB 이상의 응답만 압축
+    servlet:
+        session:
+            timeout: 60m
+            cookie:
+                http-only: true
+                secure: true
+                same-site: lax
+    # HTTPS port
+    port: 8443
+    # HTTP port (for redirection)
+    http:
+        port: 8080
+    # SSL configuration
+    ssl:
+        enabled: true
+        key-store: classpath:keystore/oyster.p12
+        key-store-password: oysterpassword
+        key-store-type: PKCS12
+        key-alias: oyster
+    url: https://localhost:8443
+
+file:
+    upload-dir: file:///D:\oyster\upload\
+    upload-security-dir: file:///D:\oyster\upload-security\
+    images-dir: file:///D:\oyster\starter\frontend\public\images\
+
+logging:
+    level:
+        root: info
+
+---
+
+spring:
+    config:
+        activate:
+            on-profile: dev
+    h2:
+        console:
+            enabled: false
+
+---
+
+spring:
+    config:
+        activate:
+            on-profile: prod
+    h2:
+        console:
+            enabled: false
