@@ -1,1 +1,9 @@
-안녕하세요
+<th:block th:replace="~{layouts/default :: html(
+        ~{::section},
+        'index',
+        null
+      )}">
+    <section id="index">
+        <p><i class="bi bi-house-door-fill text-primary" aria-hidden="true"></i>hello world!!!</p>
+    </section>
+</th:block>

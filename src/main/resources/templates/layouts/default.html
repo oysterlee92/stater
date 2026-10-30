@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="html(page, pageName, popup)">
+<head th:insert="~{fragments/head :: head(${pageName})}"></head>
+<body>
+
+<!-- 동적 Popup -->
+<article class="template" th:if="${popup != null}">
+    <th:block th:replace="${popup}"></th:block>
+</article>
+
+<!-- 고정 Popup -->
+<article class="template">
+    <!-- 예시 작업
+        <th:block th:replace="~{popups/.../... :: popup}">
+        </th:block>
+    -->
+</article>
+
+<!-- Header -->
+<header class="template" th:data-device="${device}" th:insert="~{fragments/header :: header}"></header>
+
+<!-- Main -->
+<main class="template" th:insert="${page}"></main>
+
+<!-- Footer -->
+<footer class="template" th:insert="~{fragments/footer :: footer}"></footer>
+
+</body>
+</html>

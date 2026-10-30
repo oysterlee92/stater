@@ -1,0 +1,64 @@
+<th:block th:fragment="head(pageName)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" th:content="${description}">
+    <meta name="keywords" th:content="${keywords}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" th:content="${title}">
+    <meta property="og:description" th:content="${description}">
+    <meta property="og:image" th:content="${image}">
+    <meta property="og:url" th:content="${currentUrl}">
+    <meta property="og:site_name" content="">
+    <meta property="og:locale" content="ko_KR">
+
+    <title th:text="${title}">Default Title</title>
+
+    <!-- 배포 css, js start -->
+    <th:block th:if="${!#strings.isEmpty(@environment.getProperty('spring.profiles.active'))}">
+        <link rel="icon" type="image/x-icon" href="/icon/favicon.ico">
+        <link rel="stylesheet" th:href="${@viteAssetResolver.getAssetPath('public/css/style.css')}">
+        <th:block th:each="css : ${@viteAssetResolver.getJsAssetCssPath('src/resource/core.js')}">
+            <link rel="stylesheet" th:href="@{${css}}">
+        </th:block>
+        <th:block th:if="${!#strings.isEmpty(pageName)}">
+            <th:block th:each="css : ${@viteAssetResolver.getJsAssetCssPath('src/pages/' + pageName.replace('_', '/') + '.js')}">
+                <link rel="stylesheet" th:href="@{${css}}">
+            </th:block>
+        </th:block>
+    </th:block>
+
+    <th:block th:if="${!#strings.isEmpty(@environment.getProperty('spring.profiles.active'))}">
+        <script type="module" th:src="@{${@viteAssetResolver.getAssetPath('vite/legacy-polyfills')}}"></script>
+        <script type="module" th:src="@{${@viteAssetResolver.getAssetPath('src/resource/core.js')}}"></script>
+        <th:block th:if="${!#strings.isEmpty(pageName)}">
+            <script type="module" th:src="@{${@viteAssetResolver.getAssetPath('src/fragments/fragment.js')}}"></script>
+            <script type="module" th:src="@{${@viteAssetResolver.getAssetPath('src/pages/' + pageName.replace('_', '/') + '.js')}}"></script>
+        </th:block>
+    </th:block>
+
+    <!-- 레거시 브라우저용 start -->
+    <th:block th:if="${!#strings.isEmpty(@environment.getProperty('spring.profiles.active'))}">
+        <script nomodule defer th:src="@{${@viteAssetResolver.getAssetPath('vite/legacy-polyfills-legacy')}}"></script>
+        <script nomodule defer th:src="@{${@viteAssetResolver.getAssetPath('src/common/core-legacy.js')}}"></script>
+        <th:block th:if="${pageName != null}">
+            <script nomodule defer th:src="@{${@viteAssetResolver.getAssetPath('src/pages/' + pageName.replace('_', '/') + '-legacy.js')}}"></script>
+        </th:block>
+    </th:block>
+    <!-- 레거시 브라우저용 end -->
+    <!-- 배포 css, js end -->
+
+    <!-- 로컬 css, js HMR 방식 start -->
+    <th:block th:if="${#strings.isEmpty(@environment.getProperty('spring.profiles.active'))}">
+        <link rel="icon" type="image/x-icon" href="http://localhost:5173/icon/favicon.ico">
+        <link rel="stylesheet" href="http://localhost:5173/css/style.css">
+        <script type="module" src="http://localhost:5173/@vite/client"></script>
+        <script type="module" src="http://localhost:5173/src/resource/core.js"></script>
+        <th:block th:if="${!#strings.isEmpty(pageName)}">
+            <script type="module" src="http://localhost:5173/src/fragments/fragment.js"></script>
+            <script type="module" th:src="@{'http://localhost:5173/src/pages/' + ${pageName.replace('_', '/')} + '.js'}"></script>
+        </th:block>
+    </th:block>
+    <!-- 로컬 css, js HMR 방식 end -->
+</th:block>
+
+

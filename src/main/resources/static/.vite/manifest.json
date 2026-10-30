@@ -1,0 +1,59 @@
+{
+  "public/css/style-legacy.css": {
+    "file": "assets/style-legacy-D_iIZPMe.js",
+    "name": "style",
+    "src": "public/css/style-legacy.css",
+    "isEntry": true
+  },
+  "src/fragments/fragment-legacy.js": {
+    "file": "assets/fragment-legacy-CKCxxtq9.js",
+    "name": "fragment",
+    "src": "src/fragments/fragment-legacy.js",
+    "isEntry": true
+  },
+  "src/pages/index-legacy.js": {
+    "file": "assets/index-legacy-CKCxxtq9.js",
+    "name": "index",
+    "src": "src/pages/index-legacy.js",
+    "isEntry": true
+  },
+  "src/resource/core-legacy.js": {
+    "file": "assets/core-legacy-CKCxxtq9.js",
+    "name": "core",
+    "src": "src/resource/core-legacy.js",
+    "isEntry": true
+  },
+  "vite/legacy-polyfills-legacy": {
+    "file": "assets/polyfills-legacy-M9lS85Xs.js",
+    "name": "polyfills",
+    "src": "vite/legacy-polyfills-legacy",
+    "isEntry": true
+  },
+  "public/css/style.css": {
+    "file": "assets/style-r-xodIWX.css",
+    "name": "style",
+    "names": [
+      "style.css"
+    ],
+    "src": "public/css/style.css",
+    "isEntry": true
+  },
+  "src/fragments/fragment.js": {
+    "file": "assets/fragment-D6fSbrh3.js",
+    "name": "fragment",
+    "src": "src/fragments/fragment.js",
+    "isEntry": true
+  },
+  "src/pages/index.js": {
+    "file": "assets/index-GPtC8oe2.js",
+    "name": "index",
+    "src": "src/pages/index.js",
+    "isEntry": true
+  },
+  "src/resource/core.js": {
+    "file": "assets/core-DTRFQsnu.js",
+    "name": "core",
+    "src": "src/resource/core.js",
+    "isEntry": true
+  }
+}
