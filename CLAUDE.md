@@ -1,4 +1,4 @@
-# CLAUDE.md
+# Project Agent Instructions
 
 코딩 에이전트를 위한 프로젝트 작업 지침이다. 전역 지침과 함께 읽되, 이 저장소에서는 이 파일의 구체 규칙을 우선한다.
 
@@ -6,13 +6,14 @@
 
 ## 프로젝트 기준
 
-- 백엔드는 Spring Boot 3.2, Java 21, Thymeleaf, MyBatis, PostgreSQL 기준으로 작업한다.
+- 백엔드는 Spring Boot 4.1, Java 21, Thymeleaf, Spring JDBC 기준으로 작업한다.
+- 기본 데이터베이스는 인메모리 H2이며, 설정은 `src/main/resources/application.yaml`에서 확인한다.
 - 프론트엔드 JavaScript는 `frontend/src` 아래에서 작업한다.
 - 프론트엔드 SCSS 원본은 `frontend/public/scss/style.scss`다.
 - 빌드된 CSS는 `frontend/public/css/style.css`에 생성된다. 직접 수정하지 않는다.
+- Vite 설정과 npm script는 `frontend/vite.config.js`와 `frontend/package.json`에서 확인한다. 빌드 결과는 `src/main/resources/static` 아래에 생성된다.
 - 서버 Thymeleaf 템플릿은 `src/main/resources/templates` 아래에 있다.
-- MyBatis mapper는 `src/main/resources/mapper/{domain}/{Domain}Mapper.xml` 구조를 따른다.
-- 테이블 생성이나 변경 요청은 `src/main/resources/schema.sql`에 작성한다.
+- 테이블 초기화 SQL은 `src/main/resources/schema.sql`에 작성한다. 현재 `application.yaml`의 초기화 모드는 `never`이므로 자동 실행되지 않는다.
 - 테스트는 Gradle과 JUnit Platform 기준으로 실행한다.
 
 ## 1. 코딩 전에 생각하기
