@@ -1,0 +1,152 @@
+/**
+ * 버튼 파일 업로더 스타일
+ */
+
+.oyster-button-file-uploader {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.oyster-file-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #495057;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    max-width: 300px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.oyster-file-badge:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.oyster-file-badge.server-file {
+    background-color: #e7f3ff;
+    border-color: #b3d7ff;
+    color: #0056b3;
+}
+
+.oyster-file-badge.server-file:hover {
+    background-color: #cce7ff;
+    border-color: #80c1ff;
+}
+
+.oyster-file-badge-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.oyster-file-badge-name:hover {
+    text-decoration: underline;
+}
+
+.oyster-file-badge-size {
+    font-size: 11px;
+    color: #6c757d;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.oyster-file-badge-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.oyster-file-badge-remove:hover {
+    background-color: #dc3545;
+    color: white;
+    transform: scale(1.1);
+}
+
+.oyster-file-badge-remove svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .oyster-file-badge {
+        max-width: 250px;
+        font-size: 12px;
+    }
+
+    .oyster-file-badge-size {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .oyster-file-badge {
+        max-width: 200px;
+        padding: 4px 8px;
+    }
+}
+
+/* 접근성 개선 */
+.oyster-file-badge:focus-within {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.oyster-file-badge-remove:focus {
+    outline: 2px solid #dc3545;
+    outline-offset: 2px;
+}
+
+/* 로딩 상태 (필요시 사용) */
+.oyster-file-badge.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.oyster-file-badge.loading::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

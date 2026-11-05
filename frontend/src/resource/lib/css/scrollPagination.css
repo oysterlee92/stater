@@ -1,0 +1,53 @@
+/**
+ * 스크롤 페이지네이션 스타일
+ */
+
+/* 로딩 인디케이터 */
+.oyster-loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* 로딩 애니메이션 */
+.oyster-loading-indicator::after {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 더보기 버튼 */
+.oyster-load-more-btn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.oyster-load-more-btn:hover {
+  background-color: #0069d9;
+}
+
+.oyster-load-more-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}

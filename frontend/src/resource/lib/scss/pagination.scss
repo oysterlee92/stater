@@ -1,0 +1,53 @@
+/**
+ * 페이지네이션 컴포넌트 기본 스타일
+ */
+
+.oyster-pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  justify-content: center;
+
+  .page-item {
+    margin: 0 0.25rem;
+  }
+
+  .page-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    color: #007bff;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+      background-color: #e9ecef;
+      color: #0056b3;
+      text-decoration: none;
+    }
+  }
+
+  .active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+
+  .disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #dee2e6;
+  }
+}
+
+/* 반응형 스타일 */
+@media (max-width: 576px) {
+  .oyster-pagination .page-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+}
