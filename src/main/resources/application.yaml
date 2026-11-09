@@ -77,6 +77,12 @@ logging:
     level:
         root: info
 
+decorator:
+    datasource:
+        p6spy:
+            enable-logging: true
+            logging: slf4j
+
 ---
 
 spring:
@@ -86,6 +92,19 @@ spring:
     h2:
         console:
             enabled: false
+    thymeleaf:
+        cache: true
+
+server:
+    port: 8080
+    ssl:
+        enabled: false
+    url: https://example.com
+
+file:
+    upload-dir: file:///upload/
+    upload-security-dir: file:///upload-security/
+    images-dir: file:///upload/images/
 
 ---
 
@@ -96,3 +115,17 @@ spring:
     h2:
         console:
             enabled: false
+    thymeleaf:
+        cache: true
+
+server:
+    port: 8080
+    ssl:
+        enabled: false
+    url: https://example.com
+
+file:
+    upload-dir: file:///upload/
+    upload-security-dir: file:///upload-security/
+    images-dir: file:///upload/images/
+

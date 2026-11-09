@@ -10,7 +10,7 @@ description = 'starter'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -22,14 +22,21 @@ dependencies {
 
 
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-aspectj'
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:2.0.1'
+    implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20261103.2'
+    implementation 'org.apache.commons:commons-text:1.15.0'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    
+
+    runtimeOnly 'com.h2database:h2'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     developmentOnly 'org.springframework.boot:spring-boot-h2console'

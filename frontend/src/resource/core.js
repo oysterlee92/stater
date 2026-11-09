@@ -331,6 +331,10 @@ oyster.popupView = (containerId, options) => {
             await waitForPopupAnimation();
             options.resizeHandler();
 
+            setTimeout(() => {
+               view.container.focus();
+            }, 0);
+
             oyster.debug.info(`${view.containerId} onShow`);
         },
         onHide: async () => {
@@ -342,11 +346,22 @@ oyster.popupView = (containerId, options) => {
             if (popupIndex !== -1) {
                 oyster.popupQueue.splice(popupIndex, 1);
             }
+
             if (oyster.popupQueue.length === 0) {
                 document.body.classList.remove('popup-scroll-locked');
                 document.body.style.removeProperty('--popup-scrollbar-width');
             }
             options.resizeHandler();
+
+            if (view.callback) {
+                view.callback();
+            }
+
+            setTimeout(() => {
+                if (view.focusTarget) {
+                    view.focusTarget.focus();
+                }
+            }, 0);
 
             oyster.debug.info(`${view.containerId} onHide`);
         },
